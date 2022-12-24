@@ -1,0 +1,34 @@
+{
+    "name": "Microsoft.MixedReality.Toolkit.Input.Editor",
+    "rootNamespace": "Microsoft.MixedReality.Toolkit.Input.Editor",
+    "references": [
+        "Microsoft.MixedReality.Toolkit.Core",
+        "Microsoft.MixedReality.Toolkit.Core.Editor",
+        "Microsoft.MixedReality.Toolkit.Input",
+        "Unity.XR.CoreUtils.Editor",
+        "Unity.XR.Interaction.Toolkit",
+        "Unity.XR.Interaction.Toolkit.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.atteneder.gltfast",
+            "expression": "",
+            "define": "GLTFAST_PRESENT"
+        },
+        {
+            "name": "com.atteneder.ktx",
+            "expression": "",
+            "define": "KTX_PRESENT"
+        }
+    ],
+    "noEngineReferences": false
+}

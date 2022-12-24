@@ -1,0 +1,32 @@
+{
+    "name": "Microsoft.MixedReality.OpenXR.Editor",
+    "rootNamespace": "Microsoft.MixedReality.OpenXR.Editor",
+    "references": [
+        "Microsoft.MixedReality.OpenXR",
+        "Unity.XR.ARFoundation",
+        "Unity.XR.Management",
+        "Unity.XR.Management.Editor",
+        "Unity.XR.OpenXR",
+        "Unity.XR.OpenXR.Editor",
+        "Unity.XR.OpenXR.Features.OculusQuestSupport",
+        "UnityEngine.SpatialTracking",
+        "Unity.XR.CoreUtils.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.xr.arfoundation",
+            "expression": "3.0.0",
+            "define": "USE_ARFOUNDATION"
+        }
+    ],
+    "noEngineReferences": false
+}

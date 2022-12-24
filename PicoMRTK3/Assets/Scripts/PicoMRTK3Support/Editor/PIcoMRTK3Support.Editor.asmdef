@@ -1,0 +1,21 @@
+{
+    "name": "PIcoMRTK3Support.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:dbe2339c2034a4cbb9d3ab0949a9ec09",
+        "GUID:65a004a26c89ac5468e8d4b4b057f1c8"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "MRTK3_INSTALL"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

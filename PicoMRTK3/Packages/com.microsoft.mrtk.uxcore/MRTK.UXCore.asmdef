@@ -1,0 +1,33 @@
+{
+    "name": "Microsoft.MixedReality.Toolkit.UXCore",
+    "rootNamespace": "Microsoft.MixedReality.Toolkit.UX",
+    "references": [
+        "Microsoft.MixedReality.Toolkit.Core",
+        "Microsoft.MixedReality.Toolkit.Data",
+        "Microsoft.MixedReality.GraphicsTools",
+        "Unity.InputSystem",
+        "Unity.TextMeshPro",
+        "Unity.XR.Interaction.Toolkit",
+        "Microsoft.MixedReality.Toolkit.SpatialManipulation"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.microsoft.mrtk.data",
+            "expression": "",
+            "define": "MRTK_DATA_PRESENT"
+        },
+        {
+            "name": "com.microsoft.mrtk.spatialmanipulation",
+            "expression": "",
+            "define": "MRTK_SPATIAL_PRESENT"
+        }
+    ],
+    "noEngineReferences": false
+}
