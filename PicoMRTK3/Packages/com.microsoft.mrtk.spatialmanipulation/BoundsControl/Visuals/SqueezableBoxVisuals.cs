@@ -28,7 +28,8 @@ namespace Microsoft.MixedReality.Toolkit.SpatialManipulation
         // Property block used to control the box renderer.
         private MaterialPropertyBlock propertyBlock;
 
-        [SerializeField] [Tooltip("The renderer of the squeezable bounds box.")]
+        [SerializeField]
+        [Tooltip("The renderer of the squeezable bounds box.")]
         private MeshRenderer boundsRenderer;
 
         /// <summary>
@@ -40,7 +41,8 @@ namespace Microsoft.MixedReality.Toolkit.SpatialManipulation
             set => boundsRenderer = value;
         }
 
-        [SerializeField] [Tooltip("The parent transform of the affordances/handles.")]
+        [SerializeField]
+        [Tooltip("The parent transform of the affordances/handles.")]
         private Transform handlesContainer;
 
         /// <summary>
@@ -53,8 +55,7 @@ namespace Microsoft.MixedReality.Toolkit.SpatialManipulation
         }
 
         [SerializeField]
-        [Tooltip(
-            "If true, all handles will be shown. If false, only the handles along the edge of the box will be shown.")]
+        [Tooltip("If true, all handles will be shown. If false, only the handles along the edge of the box will be shown.")]
         private bool showInternalHandles = false;
 
         /// <summary>
@@ -80,8 +81,7 @@ namespace Microsoft.MixedReality.Toolkit.SpatialManipulation
         }
 
         [SerializeField]
-        [Tooltip(
-            "Lerp time for smoothing the shrink/squeeze parameter (shrinks/squeezes the box based on variable select input)")]
+        [Tooltip("Lerp time for smoothing the shrink/squeeze parameter (shrinks/squeezes the box based on variable select input)")]
         private float shrinkLerpTime = 0.0000000001f;
 
         /// <summary>
@@ -156,8 +156,7 @@ namespace Microsoft.MixedReality.Toolkit.SpatialManipulation
         private Vector3 flattenVector;
 
         // Static Comparison<T> to enhance performance when sorting based on turn direction/polar angle.
-        private static Comparison<HandlePoint> CompareHandlePoints =
-            (a, b) => TurnDirection(comparisonAnchor, a.Position, b.Position);
+        private static Comparison<HandlePoint> CompareHandlePoints = (a, b) => TurnDirection(comparisonAnchor, a.Position, b.Position);
 
         #endregion Convex Hull Private Fields
 
@@ -176,7 +175,7 @@ namespace Microsoft.MixedReality.Toolkit.SpatialManipulation
 
             foreach (BoundsHandleInteractable handle in handles)
             {
-                projectedHandles.Add(new HandlePoint() {Handle = handle, Position = Vector3.zero});
+                projectedHandles.Add(new HandlePoint() { Handle = handle, Position = Vector3.zero });
                 handle.BoundsControlRoot = boundsControl;
             }
 
@@ -188,7 +187,7 @@ namespace Microsoft.MixedReality.Toolkit.SpatialManipulation
                 unpinchScaleOffset = (Vector3.one * (2.0f * (padding)));
                 pinchScaleOffset = (Vector3.one * (2.0f * (padding * shrinkFraction)));
             }
-
+            
 
             // Compute flatten vector at startup.
             flattenVector = BoundsCalculator.CalculateFlattenVector(transform.lossyScale);
@@ -197,13 +196,14 @@ namespace Microsoft.MixedReality.Toolkit.SpatialManipulation
         private void Update()
         {
             // Read state off of the BoundsControl component.
-            bool handlesActive = boundsControl != null ? boundsControl.HandlesActive : false;
-            bool isManipulated = boundsControl != null ? boundsControl.IsManipulated : false;
+            bool handlesActive = boundsControl != null && boundsControl.HandlesActive;
+            bool isManipulated = boundsControl != null && boundsControl.IsManipulated;
 
             // Compute smoothed focus, activation, and shrink values.
             float targetActiveFocus = 0;
             float targetActivation = 0;
             float targetShrink = 0;
+
             if (interactable != null)
             {
                 targetActiveFocus = (interactable.IsActiveHovered || interactable.isSelected || handlesActive) ? 1 : 0;
@@ -240,18 +240,15 @@ namespace Microsoft.MixedReality.Toolkit.SpatialManipulation
             {
                 if (Mathf.Abs(flattenVector.x) > 0)
                 {
-                    transform.localScale = new Vector3(flattenThickness / transform.parent.localScale.x,
-                        transform.localScale.y, transform.localScale.z);
+                    transform.localScale = new Vector3(flattenThickness / transform.parent.localScale.x, transform.localScale.y, transform.localScale.z);
                 }
                 else if (Mathf.Abs(flattenVector.y) > 0)
                 {
-                    transform.localScale = new Vector3(transform.localScale.x,
-                        flattenThickness / transform.parent.localScale.y, transform.localScale.z);
+                    transform.localScale = new Vector3(transform.localScale.x, flattenThickness / transform.parent.localScale.y, transform.localScale.z);
                 }
                 else if (Mathf.Abs(flattenVector.z) > 0)
                 {
-                    transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y,
-                        flattenThickness / transform.parent.localScale.z);
+                    transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, flattenThickness / transform.parent.localScale.z);
                 }
             }
 
@@ -259,8 +256,8 @@ namespace Microsoft.MixedReality.Toolkit.SpatialManipulation
             if (handlesContainer != null)
             {
                 UpdateHandles(handlesActive,
-                    boundsControl != null ? boundsControl.EnabledHandles : HandleType.None,
-                    boundsControl != null ? boundsControl.IsFlat : false);
+                              boundsControl != null ? boundsControl.EnabledHandles : HandleType.None,
+                              boundsControl != null && boundsControl.IsFlat);
             }
         }
 
@@ -272,8 +269,7 @@ namespace Microsoft.MixedReality.Toolkit.SpatialManipulation
         /// <param name="focus">In a range [0,1], this controls the fade-in/out of the box.</param>
         /// <param name="activation">In a range [0,1], this changes the color of the box to the "active" color.</param>
         /// <param name="shrink">In a range [0,1], this shrinks the box from (size + padding * 2) to (size + (padding * 2 * shrinkFraction)</param>
-        protected virtual void WritePropertyValues(MeshRenderer renderer, MaterialPropertyBlock propertyBlock,
-            float focus, float activation, float shrink)
+        protected virtual void WritePropertyValues(MeshRenderer renderer, MaterialPropertyBlock propertyBlock, float focus, float activation, float shrink)
         {
             renderer.GetPropertyBlock(propertyBlock);
             // Fades the box in.
@@ -296,6 +292,7 @@ namespace Microsoft.MixedReality.Toolkit.SpatialManipulation
         {
             padding = renderer.material.GetFloat("_Bevel_Radius_");
             shrinkFraction = renderer.material.GetFloat("_Shrunk_Radius_Fraction_");
+
         }
 
         private static readonly ProfilerMarker UpdateHandlesPerfMarker =
@@ -306,11 +303,8 @@ namespace Microsoft.MixedReality.Toolkit.SpatialManipulation
             using (UpdateHandlesPerfMarker.Auto())
             {
                 // Adjust the local scale of the handles container such that the handles match the edge of the shrinkable box.
-                Vector3 scaleReciprocal = new Vector3(1.0f / handlesContainer.lossyScale.x,
-                    1.0f / handlesContainer.lossyScale.y, 1.0f / handlesContainer.lossyScale.z);
-                handlesContainer.localScale = Vector3.one +
-                                              Vector3.Scale(Vector3.Lerp(unpinchScaleOffset, pinchScaleOffset, shrink),
-                                                  scaleReciprocal);
+                Vector3 scaleReciprocal = new Vector3(1.0f / handlesContainer.lossyScale.x, 1.0f / handlesContainer.lossyScale.y, 1.0f / handlesContainer.lossyScale.z);
+                handlesContainer.localScale = Vector3.one + Vector3.Scale(Vector3.Lerp(unpinchScaleOffset, pinchScaleOffset, shrink), scaleReciprocal);
 
                 foreach (var handle in handles)
                 {
@@ -361,9 +355,7 @@ namespace Microsoft.MixedReality.Toolkit.SpatialManipulation
                     projectedHandles[i] = new HandlePoint()
                     {
                         Handle = projectedHandles[i].Handle,
-                        Position = Camera.main.WorldToScreenPoint(projectedHandles[i].Handle.transform.position +
-                                                                  (projectedHandles[i].Handle.transform.position -
-                                                                   transform.position).normalized * convexPadding),
+                        Position = Camera.main.WorldToScreenPoint(projectedHandles[i].Handle.transform.position + (projectedHandles[i].Handle.transform.position - transform.position).normalized * convexPadding),
                     };
                 }
 
@@ -375,8 +367,7 @@ namespace Microsoft.MixedReality.Toolkit.SpatialManipulation
                     {
                         comparisonAnchor = projectedHandles[i].Position;
                     }
-                    else if (projectedHandles[i].Position.y == comparisonAnchor.y &&
-                             projectedHandles[i].Position.x < comparisonAnchor.x)
+                    else if (projectedHandles[i].Position.y == comparisonAnchor.y && projectedHandles[i].Position.x < comparisonAnchor.x)
                     {
                         comparisonAnchor = projectedHandles[i].Position;
                     }
@@ -387,14 +378,12 @@ namespace Microsoft.MixedReality.Toolkit.SpatialManipulation
                 stack.Clear();
                 foreach (HandlePoint handlePoint in projectedHandles)
                 {
-                    while (stack.Count > 1 && TurnDirection(PeekSecond(stack).Position, stack.Peek().Position,
-                               handlePoint.Position) > 0)
+                    while (stack.Count > 1 && TurnDirection(PeekSecond(stack).Position, stack.Peek().Position, handlePoint.Position) > 0)
                     {
                         var popped = stack.Pop();
                         popped.Handle.IsOccluded = true;
                         popped.Handle.IsFlattened = false;
                     }
-
                     stack.Push(handlePoint);
                 }
 
@@ -424,7 +413,7 @@ namespace Microsoft.MixedReality.Toolkit.SpatialManipulation
                 // If the vector points away, we need to correct it to point towards the user.
                 // Handles use this vector to determine their orientation for flattened visuals.
                 bool flattenPointsAway = Vector3.Dot(handlesContainer.TransformVector(flattenVector),
-                    handlesContainer.position - Camera.main.transform.position) > 0;
+                                                    handlesContainer.position - Camera.main.transform.position) > 0;
                 if (flattenPointsAway)
                 {
                     flattenVector = -flattenVector;

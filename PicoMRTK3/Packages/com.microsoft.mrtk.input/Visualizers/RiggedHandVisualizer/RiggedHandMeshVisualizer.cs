@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
 using Microsoft.MixedReality.Toolkit.Subsystems;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,12 +23,15 @@ namespace Microsoft.MixedReality.Toolkit.Input
     [AddComponentMenu("MRTK/Input/Visualizers/Rigged Hand Mesh Visualizer")]
     public class RiggedHandMeshVisualizer : MonoBehaviour
     {
-        [SerializeField]
-        [Tooltip("The XRNode on which this hand is located.")]
+        [SerializeField] [Tooltip("The XRNode on which this hand is located.")]
         private XRNode handNode = XRNode.LeftHand;
 
         /// <summary> The XRNode on which this hand is located. </summary>
-        public XRNode HandNode { get => handNode; set => handNode = value; }
+        public XRNode HandNode
+        {
+            get => handNode;
+            set => handNode = value;
+        }
 
         [SerializeField]
         [Tooltip("When true, this visualizer will render rigged hands even on XR devices " +
@@ -47,12 +51,10 @@ namespace Microsoft.MixedReality.Toolkit.Input
             set => showHandsOnTransparentDisplays = value;
         }
 
-        [SerializeField]
-        [Tooltip("The transform of the wrist joint.")]
+        [SerializeField] [Tooltip("The transform of the wrist joint.")]
         private Transform wrist;
 
-        [SerializeField]
-        [Tooltip("Renderer of the hand mesh")]
+        [SerializeField] [Tooltip("Renderer of the hand mesh")]
         private SkinnedMeshRenderer handRenderer = null;
 
         [SerializeField]
@@ -78,7 +80,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
 
         // The actual, physical, rigged joints that drive the skinned mesh.
         // Otherwise referred to as "armature". Must be in OpenXR order.
-        private readonly Transform[] riggedVisualJointsArray = new Transform[(int)TrackedHandJoint.TotalJoints];
+        private readonly Transform[] riggedVisualJointsArray = new Transform[(int) TrackedHandJoint.TotalJoints];
 
         // The substring used to determine the "leaf joint"
         // at the end of a finger, which is discarded.
@@ -115,14 +117,17 @@ namespace Microsoft.MixedReality.Toolkit.Input
             }
 
             // Start the depth-first-traversal at the wrist index.
-            int index = (int)TrackedHandJoint.Wrist;
+            int index = (int) TrackedHandJoint.Wrist;
 
             // This performs a depth-first-traversal of the armature. Ensure
             // the provided armature's bones/joints are in OpenXR order.
             foreach (Transform child in wrist.GetComponentsInChildren<Transform>())
             {
                 // The "leaf joints" are excluded.
-                if (child.name.Contains(endJointName)) { continue; }
+                if (child.name.Contains(endJointName))
+                {
+                    continue;
+                }
 
                 riggedVisualJointsArray[index++] = child;
             }
@@ -134,7 +139,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
             handRenderer.enabled = false;
 
             Debug.Assert(handNode == XRNode.LeftHand || handNode == XRNode.RightHand,
-                         $"HandVisualizer has an invalid XRNode ({handNode})!");
+                $"HandVisualizer has an invalid XRNode ({handNode})!");
 
             handsSubsystem = XRSubsystemHelpers.GetFirstRunningSubsystem<HandsAggregatorSubsystem>();
 
@@ -155,7 +160,8 @@ namespace Microsoft.MixedReality.Toolkit.Input
         /// </summary>
         private IEnumerator EnableWhenSubsystemAvailable()
         {
-            yield return new WaitUntil(() => XRSubsystemHelpers.GetFirstRunningSubsystem<HandsAggregatorSubsystem>() != null);
+            yield return new WaitUntil(() =>
+                XRSubsystemHelpers.GetFirstRunningSubsystem<HandsAggregatorSubsystem>() != null);
             OnEnable();
         }
 
@@ -194,7 +200,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
 
                 if (jointTransform != null)
                 {
-                    switch ((TrackedHandJoint)i)
+                    switch ((TrackedHandJoint) i)
                     {
                         case TrackedHandJoint.Palm:
                             // Don't track the palm. The hand mesh shouldn't have a "palm bone".
@@ -202,7 +208,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
                         case TrackedHandJoint.Wrist:
                             // Set the wrist directly from the joint data.
                             jointTransform.position = jointPose.Position;
-                            jointTransform.rotation = jointPose.Rotation;
+                            jointTransform.rotation =new Quaternion(jointPose.Rotation.x,jointPose.Rotation.y+90,jointPose.Rotation.z,jointPose.Rotation.w);
                             break;
                         case TrackedHandJoint.ThumbTip:
                         case TrackedHandJoint.IndexTip:
@@ -212,7 +218,8 @@ namespace Microsoft.MixedReality.Toolkit.Input
                             // The tip bone uses the joint rotation directly.
                             jointTransform.rotation = joints[i - 1].Rotation;
                             // Compute and accumulate the error between the hand mesh and the user's joint data.
-                            error += JointError(jointTransform.position, joints[i - 1].Position, jointTransform.forward);
+                            error += JointError(jointTransform.position, joints[i - 1].Position,
+                                jointTransform.forward);
                             break;
                         case TrackedHandJoint.ThumbMetacarpal:
                         case TrackedHandJoint.IndexMetacarpal:
@@ -221,11 +228,13 @@ namespace Microsoft.MixedReality.Toolkit.Input
                         case TrackedHandJoint.LittleMetacarpal:
                             // Special case metacarpals, because Wrist is not always i-1.
                             // This is the same "simple IK" as the default case, but with special index logic.
-                            jointTransform.rotation = Quaternion.LookRotation(jointPose.Position - joints[(int)TrackedHandJoint.Wrist].Position, jointPose.Up);
+                            jointTransform.rotation = Quaternion.LookRotation(
+                                jointPose.Position - joints[(int) TrackedHandJoint.Wrist].Position, jointPose.Up);
                             break;
                         default:
                             // For all other bones, do a simple "IK" from the rigged joint to the joint data's position.
-                            jointTransform.rotation = Quaternion.LookRotation(jointPose.Position - jointTransform.position, joints[i - 1].Up);
+                            jointTransform.rotation =
+                                Quaternion.LookRotation(jointPose.Position - jointTransform.position, joints[i - 1].Up);
                             break;
                     }
                 }
@@ -248,7 +257,8 @@ namespace Microsoft.MixedReality.Toolkit.Input
             // Apply.
             handScale += -error * errorGainFactor;
             handScale = Mathf.Clamp(handScale, minScale, maxScale);
-            transform.localScale = new Vector3(handNode == XRNode.LeftHand ? -handScale : handScale, handScale, handScale);
+            transform.localScale =
+                new Vector3(handNode == XRNode.LeftHand ? -handScale : handScale, handScale, handScale);
 
             // Update the hand material based on selectedness value
             UpdateHandMaterial();
@@ -299,7 +309,10 @@ namespace Microsoft.MixedReality.Toolkit.Input
                 controller = GetComponentInParent<XRBaseController>();
             }
 
-            if (controller == null || handRenderer == null) { return; }
+            if (controller == null || handRenderer == null)
+            {
+                return;
+            }
 
             // Update the hand material
             float pinchAmount = Mathf.Pow(controller.selectInteractionState.value, 2.0f);

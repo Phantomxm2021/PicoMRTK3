@@ -387,8 +387,6 @@ namespace Microsoft.MixedReality.Toolkit.Input
 
                     foreach (GameObject controller in controllers)
                     {
-                       
-
                         if (detector.IsModeDetected())
                         {
                             SetInteractionMode(controller, detector.ModeOnDetection);

@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
 using Microsoft.MixedReality.Toolkit.Subsystems;
 using Unity.Profiling;
 using UnityEngine;
@@ -48,9 +49,8 @@ namespace Microsoft.MixedReality.Toolkit.Input
         /// <summary>
         /// Cached reference to hands aggregator for efficient per-frame use.
         /// </summary>
-        protected HandsAggregatorSubsystem HandsAggregator => handsAggregator ??= HandsUtils.GetSubsystem();
-
-        private HandsAggregatorSubsystem handsAggregator;
+        [Obsolete("Deprecated, please use XRSubsystemHelpers.HandsAggregator instead.")]
+        protected HandsAggregatorSubsystem HandsAggregator => XRSubsystemHelpers.HandsAggregator;
 
         /// <summary>
         /// How unselected the interactor must be to initiate a new hover or selection on a new target.
@@ -77,9 +77,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
 
         #region IHandedInteractor
 
-        Handedness IHandedInteractor.Handedness => (xrController is ArticulatedHandController handController)
-            ? handController.HandNode.ToHandedness()
-            : Handedness.None;
+        Handedness IHandedInteractor.Handedness => (xrController is ArticulatedHandController handController) ? handController.HandNode.ToHandedness() : Handedness.None;
 
         #endregion IHandedInteractor
 
@@ -116,8 +114,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
         /// <inheritdoc />
         public override bool CanSelect(IXRSelectInteractable interactable)
         {
-            return base.CanSelect(interactable) && (!hasSelection || IsSelecting(interactable)) &&
-                   isRelaxedBeforeSelect;
+            return base.CanSelect(interactable) && (!hasSelection || IsSelecting(interactable)) && isRelaxedBeforeSelect;
         }
 
         /// <inheritdoc />
@@ -134,14 +131,12 @@ namespace Microsoft.MixedReality.Toolkit.Input
                 else
                 {
                     bool hoverActive = base.isHoverActive;
-
                     if (hoverActive)
                     {
                         if (xrController is ArticulatedHandController handController)
                         {
                             bool isPalmFacingAway = false;
-                            if (HandsAggregator?.TryGetPalmFacingAway(handController.HandNode, out isPalmFacingAway) ??
-                                true)
+                            if (XRSubsystemHelpers.HandsAggregator?.TryGetPalmFacingAway(handController.HandNode, out isPalmFacingAway) ?? true)
                             {
                                 hoverActive &= isPalmFacingAway;
                             }
@@ -155,18 +150,13 @@ namespace Microsoft.MixedReality.Toolkit.Input
 
         [SerializeReference]
         [InterfaceSelector(true)]
-        [Tooltip(
-            "The pose source representing the pose this interactor uses for aiming and positioning. Follows the 'pointer pose'")]
+        [Tooltip("The pose source representing the pose this interactor uses for aiming and positioning. Follows the 'pointer pose'")]
         private IPoseSource aimPoseSource;
 
         /// <summary>
         /// The pose source representing the ray this interactor uses for aiming and positioning.
         /// </summary>
-        protected IPoseSource AimPoseSource
-        {
-            get => aimPoseSource;
-            set => aimPoseSource = value;
-        }
+        protected IPoseSource AimPoseSource { get => aimPoseSource; set => aimPoseSource = value; }
 
         [SerializeReference]
         [InterfaceSelector(true)]
@@ -176,11 +166,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
         /// <summary>
         /// The pose source representing the device this interactor uses for rotation.
         /// </summary>
-        protected IPoseSource DevicePoseSource
-        {
-            get => devicePoseSource;
-            set => devicePoseSource = value;
-        }
+        protected IPoseSource DevicePoseSource { get => devicePoseSource; set => devicePoseSource = value; }
 
         private static readonly ProfilerMarker ProcessInteractorPerfMarker =
             new ProfilerMarker("[MRTK] MRTKRayInteractor.ProcessInteractor");
@@ -188,6 +174,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
         public override void ProcessInteractor(XRInteractionUpdateOrder.UpdatePhase updatePhase)
         {
             base.ProcessInteractor(updatePhase);
+
             using (ProcessInteractorPerfMarker.Auto())
             {
                 if (updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic)
@@ -211,6 +198,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
         protected override void OnSelectEntering(SelectEnterEventArgs args)
         {
             base.OnSelectEntering(args);
+
             initialLocalAttach = new Pose(attachTransform.localPosition, attachTransform.localRotation);
             refDistance = PoseUtilities.GetDistanceToBody(new Pose(transform.position, transform.rotation));
         }
@@ -229,8 +217,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
                 if (hasSelection)
                 {
                     float distanceRatio = PoseUtilities.GetDistanceToBody(aimPose) / refDistance;
-                    attachTransform.localPosition = new Vector3(initialLocalAttach.position.x,
-                        initialLocalAttach.position.y, initialLocalAttach.position.z * distanceRatio);
+                    attachTransform.localPosition = new Vector3(initialLocalAttach.position.x, initialLocalAttach.position.y, initialLocalAttach.position.z * distanceRatio);
                 }
             }
 

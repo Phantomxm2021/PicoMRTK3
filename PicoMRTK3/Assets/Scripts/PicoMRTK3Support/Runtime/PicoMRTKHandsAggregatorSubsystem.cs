@@ -283,12 +283,6 @@ namespace PicoMRTK3Support.Runtime
                 return TryGetJoint(TrackedHandJoint.IndexTip, handNode, out jointPose);
             }
 
-            /// <inheritdoc/>
-            [Obsolete("Use TryGetJoint(TrackedHandJoint.Palm...) instead.")]
-            public override bool TryGetHandCenter(XRNode handNode, out HandJointPose jointPose)
-            {
-                return TryGetJoint(TrackedHandJoint.Palm, handNode, out jointPose);
-            }
 
             /// <inheritdoc/>
             public override bool TryGetPinchingPoint(XRNode handNode, out HandJointPose jointPose)

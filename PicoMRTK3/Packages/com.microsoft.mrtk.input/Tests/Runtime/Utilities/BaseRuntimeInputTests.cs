@@ -19,7 +19,7 @@ namespace Microsoft.MixedReality.Toolkit.Input.Tests
     public abstract class BaseRuntimeInputTests : BaseRuntimeTests
     {
         // Isolates/sandboxes the input system state for each test instance.
-        private  UnityEngine.InputSystem.InputTestFixture input = new  UnityEngine.InputSystem.InputTestFixture();
+        private InputTestFixture input = new InputTestFixture();
 
         private XRInteractionManager cachedInteractionManager = null;
 

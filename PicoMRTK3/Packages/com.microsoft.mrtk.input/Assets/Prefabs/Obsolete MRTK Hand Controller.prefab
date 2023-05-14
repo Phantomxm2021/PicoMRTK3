@@ -58,6 +58,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
+  m_DisableVisualsWhenBlockedInGroup: 1
   m_StartingSelectedInteractable: {fileID: 0}
   m_StartingTargetFilter: {fileID: 0}
   m_HoverEntered:
@@ -142,9 +143,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
+  m_RaycastSnapVolumeInteraction: 1
   m_HitClosestOnly: 1
   m_HoverToSelect: 0
   m_HoverTimeToSelect: 0.5
+  m_AutoDeselect: 0
+  m_TimeToAutoDeselect: 3
   m_EnableUIInteraction: 1
   m_AllowAnchorControl: 0
   m_UseForceGrab: 0
@@ -160,24 +164,21 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 0
-      type: {class: FallbackCompositePoseSource, ns: Microsoft.MixedReality.Toolkit.Input,
-        asm: Microsoft.MixedReality.Toolkit.Input}
+      type: {class: FallbackCompositePoseSource, ns: Microsoft.MixedReality.Toolkit.Input, asm: Microsoft.MixedReality.Toolkit.Input}
       data:
         poseSourceList:
         - rid: 2
         - rid: 3
         poseSources: []
     - rid: 1
-      type: {class: FallbackCompositePoseSource, ns: Microsoft.MixedReality.Toolkit.Input,
-        asm: Microsoft.MixedReality.Toolkit.Input}
+      type: {class: FallbackCompositePoseSource, ns: Microsoft.MixedReality.Toolkit.Input, asm: Microsoft.MixedReality.Toolkit.Input}
       data:
         poseSourceList:
         - rid: 4
         - rid: 5
         poseSources: []
     - rid: 2
-      type: {class: InputActionPoseSource, ns: Microsoft.MixedReality.Toolkit.Input,
-        asm: Microsoft.MixedReality.Toolkit.Input}
+      type: {class: InputActionPoseSource, ns: Microsoft.MixedReality.Toolkit.Input, asm: Microsoft.MixedReality.Toolkit.Input}
       data:
         trackingStateActionProperty:
           m_UseReference: 1
@@ -190,8 +191,7 @@ MonoBehaviour:
             m_Interactions: 
             m_SingletonActionBindings: []
             m_Flags: 0
-          m_Reference: {fileID: -7613329581162844239, guid: 18c412191cdc9274897f101c7fd5316f,
-            type: 3}
+          m_Reference: {fileID: -7613329581162844239, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
         positionActionProperty:
           m_UseReference: 1
           m_Action:
@@ -203,8 +203,7 @@ MonoBehaviour:
             m_Interactions: 
             m_SingletonActionBindings: []
             m_Flags: 0
-          m_Reference: {fileID: -2024308242397127297, guid: 18c412191cdc9274897f101c7fd5316f,
-            type: 3}
+          m_Reference: {fileID: -2024308242397127297, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
         rotationActionProperty:
           m_UseReference: 1
           m_Action:
@@ -216,16 +215,13 @@ MonoBehaviour:
             m_Interactions: 
             m_SingletonActionBindings: []
             m_Flags: 0
-          m_Reference: {fileID: 8248158260566104461, guid: 18c412191cdc9274897f101c7fd5316f,
-            type: 3}
+          m_Reference: {fileID: 8248158260566104461, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
     - rid: 3
-      type: {class: PolyfillHandRayPoseSource, ns: Microsoft.MixedReality.Toolkit.Input,
-        asm: Microsoft.MixedReality.Toolkit.Input}
+      type: {class: PolyfillHandRayPoseSource, ns: Microsoft.MixedReality.Toolkit.Input, asm: Microsoft.MixedReality.Toolkit.Input}
       data:
         hand: 0
     - rid: 4
-      type: {class: InputActionPoseSource, ns: Microsoft.MixedReality.Toolkit.Input,
-        asm: Microsoft.MixedReality.Toolkit.Input}
+      type: {class: InputActionPoseSource, ns: Microsoft.MixedReality.Toolkit.Input, asm: Microsoft.MixedReality.Toolkit.Input}
       data:
         trackingStateActionProperty:
           m_UseReference: 1
@@ -238,8 +234,7 @@ MonoBehaviour:
             m_Interactions: 
             m_SingletonActionBindings: []
             m_Flags: 0
-          m_Reference: {fileID: -7613329581162844239, guid: 18c412191cdc9274897f101c7fd5316f,
-            type: 3}
+          m_Reference: {fileID: -7613329581162844239, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
         positionActionProperty:
           m_UseReference: 1
           m_Action:
@@ -251,8 +246,7 @@ MonoBehaviour:
             m_Interactions: 
             m_SingletonActionBindings: []
             m_Flags: 0
-          m_Reference: {fileID: 5671224385460781980, guid: 18c412191cdc9274897f101c7fd5316f,
-            type: 3}
+          m_Reference: {fileID: 5671224385460781980, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
         rotationActionProperty:
           m_UseReference: 1
           m_Action:
@@ -264,11 +258,9 @@ MonoBehaviour:
             m_Interactions: 
             m_SingletonActionBindings: []
             m_Flags: 0
-          m_Reference: {fileID: -4531104493956672492, guid: 18c412191cdc9274897f101c7fd5316f,
-            type: 3}
+          m_Reference: {fileID: -4531104493956672492, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
     - rid: 5
-      type: {class: HandJointPoseSource, ns: Microsoft.MixedReality.Toolkit.Input,
-        asm: Microsoft.MixedReality.Toolkit.Input}
+      type: {class: HandJointPoseSource, ns: Microsoft.MixedReality.Toolkit.Input, asm: Microsoft.MixedReality.Toolkit.Input}
       data:
         hand: 0
         joint: 0
@@ -424,6 +416,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
+  maxGradientLength: 0.3
   lineWidth:
     serializedVersion: 2
     m_Curve:
@@ -544,6 +537,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_AttachTransform: {fileID: 1051247791254679178}
   m_KeepSelectedTargetValid: 1
+  m_DisableVisualsWhenBlockedInGroup: 1
   m_StartingSelectedInteractable: {fileID: 0}
   m_StartingTargetFilter: {fileID: 0}
   m_HoverEntered:
@@ -614,8 +608,7 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 0
-      type: {class: FallbackCompositePoseSource, ns: Microsoft.MixedReality.Toolkit.Input,
-        asm: Microsoft.MixedReality.Toolkit.Input}
+      type: {class: FallbackCompositePoseSource, ns: Microsoft.MixedReality.Toolkit.Input, asm: Microsoft.MixedReality.Toolkit.Input}
       data:
         poseSourceList:
         - rid: 1
@@ -626,8 +619,7 @@ MonoBehaviour:
       data:
         hand: 0
     - rid: 2
-      type: {class: InputActionPoseSource, ns: Microsoft.MixedReality.Toolkit.Input,
-        asm: Microsoft.MixedReality.Toolkit.Input}
+      type: {class: InputActionPoseSource, ns: Microsoft.MixedReality.Toolkit.Input, asm: Microsoft.MixedReality.Toolkit.Input}
       data:
         trackingStateActionProperty:
           m_UseReference: 1
@@ -640,8 +632,7 @@ MonoBehaviour:
             m_Interactions: 
             m_SingletonActionBindings: []
             m_Flags: 0
-          m_Reference: {fileID: -7613329581162844239, guid: 18c412191cdc9274897f101c7fd5316f,
-            type: 3}
+          m_Reference: {fileID: -7613329581162844239, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
         positionActionProperty:
           m_UseReference: 1
           m_Action:
@@ -653,8 +644,7 @@ MonoBehaviour:
             m_Interactions: 
             m_SingletonActionBindings: []
             m_Flags: 0
-          m_Reference: {fileID: -2024308242397127297, guid: 18c412191cdc9274897f101c7fd5316f,
-            type: 3}
+          m_Reference: {fileID: -2024308242397127297, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
         rotationActionProperty:
           m_UseReference: 1
           m_Action:
@@ -666,8 +656,7 @@ MonoBehaviour:
             m_Interactions: 
             m_SingletonActionBindings: []
             m_Flags: 0
-          m_Reference: {fileID: 8248158260566104461, guid: 18c412191cdc9274897f101c7fd5316f,
-            type: 3}
+          m_Reference: {fileID: 8248158260566104461, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
 --- !u!54 &5296314582960356879
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -776,8 +765,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 5671224385460781980, guid: 18c412191cdc9274897f101c7fd5316f,
-      type: 3}
+    m_Reference: {fileID: 5671224385460781980, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
   m_RotationAction:
     m_UseReference: 1
     m_Action:
@@ -789,8 +777,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -4531104493956672492, guid: 18c412191cdc9274897f101c7fd5316f,
-      type: 3}
+    m_Reference: {fileID: -4531104493956672492, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
   m_TrackingStateAction:
     m_UseReference: 1
     m_Action:
@@ -802,8 +789,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -7613329581162844239, guid: 18c412191cdc9274897f101c7fd5316f,
-      type: 3}
+    m_Reference: {fileID: -7613329581162844239, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
   m_SelectAction:
     m_UseReference: 1
     m_Action:
@@ -815,8 +801,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -6131295136447488360, guid: 18c412191cdc9274897f101c7fd5316f,
-      type: 3}
+    m_Reference: {fileID: -6131295136447488360, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
   m_SelectActionValue:
     m_UseReference: 1
     m_Action:
@@ -828,8 +813,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -294446728694031702, guid: 18c412191cdc9274897f101c7fd5316f,
-      type: 3}
+    m_Reference: {fileID: -294446728694031702, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
   m_ActivateAction:
     m_UseReference: 1
     m_Action:
@@ -841,8 +825,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -5982496924579745919, guid: 18c412191cdc9274897f101c7fd5316f,
-      type: 3}
+    m_Reference: {fileID: -5982496924579745919, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
   m_ActivateActionValue:
     m_UseReference: 0
     m_Action:
@@ -866,8 +849,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -6395602842196007441, guid: 18c412191cdc9274897f101c7fd5316f,
-      type: 3}
+    m_Reference: {fileID: -6395602842196007441, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
   m_UIPressActionValue:
     m_UseReference: 0
     m_Action:
@@ -903,8 +885,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -7363382999065477798, guid: 18c412191cdc9274897f101c7fd5316f,
-      type: 3}
+    m_Reference: {fileID: -7363382999065477798, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
   m_DirectionalAnchorRotationAction:
     m_UseReference: 0
     m_Action:
@@ -928,8 +909,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 7779212132400271959, guid: 18c412191cdc9274897f101c7fd5316f,
-      type: 3}
+    m_Reference: {fileID: 7779212132400271959, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
   m_ButtonPressPoint: 0.5
   handNode: 4
 --- !u!1 &1948193616346090105
@@ -987,6 +967,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_AttachTransform: {fileID: 8443923956584964973}
   m_KeepSelectedTargetValid: 0
+  m_DisableVisualsWhenBlockedInGroup: 1
   m_StartingSelectedInteractable: {fileID: 0}
   m_StartingTargetFilter: {fileID: 0}
   m_HoverEntered:
@@ -1057,22 +1038,19 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 0
-      type: {class: FallbackCompositePoseSource, ns: Microsoft.MixedReality.Toolkit.Input,
-        asm: Microsoft.MixedReality.Toolkit.Input}
+      type: {class: FallbackCompositePoseSource, ns: Microsoft.MixedReality.Toolkit.Input, asm: Microsoft.MixedReality.Toolkit.Input}
       data:
         poseSourceList:
         - rid: 1
         - rid: 2
         poseSources: []
     - rid: 1
-      type: {class: HandJointPoseSource, ns: Microsoft.MixedReality.Toolkit.Input,
-        asm: Microsoft.MixedReality.Toolkit.Input}
+      type: {class: HandJointPoseSource, ns: Microsoft.MixedReality.Toolkit.Input, asm: Microsoft.MixedReality.Toolkit.Input}
       data:
         hand: 0
         joint: 10
     - rid: 2
-      type: {class: InputActionPoseSource, ns: Microsoft.MixedReality.Toolkit.Input,
-        asm: Microsoft.MixedReality.Toolkit.Input}
+      type: {class: InputActionPoseSource, ns: Microsoft.MixedReality.Toolkit.Input, asm: Microsoft.MixedReality.Toolkit.Input}
       data:
         trackingStateActionProperty:
           m_UseReference: 1
@@ -1085,8 +1063,7 @@ MonoBehaviour:
             m_Interactions: 
             m_SingletonActionBindings: []
             m_Flags: 0
-          m_Reference: {fileID: -7613329581162844239, guid: 18c412191cdc9274897f101c7fd5316f,
-            type: 3}
+          m_Reference: {fileID: -7613329581162844239, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
         positionActionProperty:
           m_UseReference: 1
           m_Action:
@@ -1098,8 +1075,7 @@ MonoBehaviour:
             m_Interactions: 
             m_SingletonActionBindings: []
             m_Flags: 0
-          m_Reference: {fileID: -2024308242397127297, guid: 18c412191cdc9274897f101c7fd5316f,
-            type: 3}
+          m_Reference: {fileID: -2024308242397127297, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
         rotationActionProperty:
           m_UseReference: 1
           m_Action:
@@ -1111,8 +1087,7 @@ MonoBehaviour:
             m_Interactions: 
             m_SingletonActionBindings: []
             m_Flags: 0
-          m_Reference: {fileID: 8248158260566104461, guid: 18c412191cdc9274897f101c7fd5316f,
-            type: 3}
+          m_Reference: {fileID: 8248158260566104461, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
 --- !u!114 &2149070630719831301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1284,6 +1259,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
+  m_DisableVisualsWhenBlockedInGroup: 1
   m_StartingSelectedInteractable: {fileID: 0}
   m_StartingTargetFilter: {fileID: 0}
   m_HoverEntered:
@@ -1362,8 +1338,7 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 0
-      type: {class: FallbackCompositePoseSource, ns: Microsoft.MixedReality.Toolkit.Input,
-        asm: Microsoft.MixedReality.Toolkit.Input}
+      type: {class: FallbackCompositePoseSource, ns: Microsoft.MixedReality.Toolkit.Input, asm: Microsoft.MixedReality.Toolkit.Input}
       data:
         poseSourceList:
         - rid: 3
@@ -1374,16 +1349,14 @@ MonoBehaviour:
       data:
         hand: 0
     - rid: 2
-      type: {class: FallbackCompositePoseSource, ns: Microsoft.MixedReality.Toolkit.Input,
-        asm: Microsoft.MixedReality.Toolkit.Input}
+      type: {class: FallbackCompositePoseSource, ns: Microsoft.MixedReality.Toolkit.Input, asm: Microsoft.MixedReality.Toolkit.Input}
       data:
         poseSourceList:
         - rid: 5
         - rid: 6
         poseSources: []
     - rid: 3
-      type: {class: InputActionPoseSource, ns: Microsoft.MixedReality.Toolkit.Input,
-        asm: Microsoft.MixedReality.Toolkit.Input}
+      type: {class: InputActionPoseSource, ns: Microsoft.MixedReality.Toolkit.Input, asm: Microsoft.MixedReality.Toolkit.Input}
       data:
         trackingStateActionProperty:
           m_UseReference: 1
@@ -1396,8 +1369,7 @@ MonoBehaviour:
             m_Interactions: 
             m_SingletonActionBindings: []
             m_Flags: 0
-          m_Reference: {fileID: -7613329581162844239, guid: 18c412191cdc9274897f101c7fd5316f,
-            type: 3}
+          m_Reference: {fileID: -7613329581162844239, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
         positionActionProperty:
           m_UseReference: 1
           m_Action:
@@ -1409,8 +1381,7 @@ MonoBehaviour:
             m_Interactions: 
             m_SingletonActionBindings: []
             m_Flags: 0
-          m_Reference: {fileID: 5671224385460781980, guid: 18c412191cdc9274897f101c7fd5316f,
-            type: 3}
+          m_Reference: {fileID: 5671224385460781980, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
         rotationActionProperty:
           m_UseReference: 1
           m_Action:
@@ -1422,17 +1393,14 @@ MonoBehaviour:
             m_Interactions: 
             m_SingletonActionBindings: []
             m_Flags: 0
-          m_Reference: {fileID: -4531104493956672492, guid: 18c412191cdc9274897f101c7fd5316f,
-            type: 3}
+          m_Reference: {fileID: -4531104493956672492, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
     - rid: 4
-      type: {class: HandJointPoseSource, ns: Microsoft.MixedReality.Toolkit.Input,
-        asm: Microsoft.MixedReality.Toolkit.Input}
+      type: {class: HandJointPoseSource, ns: Microsoft.MixedReality.Toolkit.Input, asm: Microsoft.MixedReality.Toolkit.Input}
       data:
         hand: 0
         joint: 0
     - rid: 5
-      type: {class: InputActionPoseSource, ns: Microsoft.MixedReality.Toolkit.Input,
-        asm: Microsoft.MixedReality.Toolkit.Input}
+      type: {class: InputActionPoseSource, ns: Microsoft.MixedReality.Toolkit.Input, asm: Microsoft.MixedReality.Toolkit.Input}
       data:
         trackingStateActionProperty:
           m_UseReference: 1
@@ -1445,8 +1413,7 @@ MonoBehaviour:
             m_Interactions: 
             m_SingletonActionBindings: []
             m_Flags: 0
-          m_Reference: {fileID: -7613329581162844239, guid: 18c412191cdc9274897f101c7fd5316f,
-            type: 3}
+          m_Reference: {fileID: -7613329581162844239, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
         positionActionProperty:
           m_UseReference: 1
           m_Action:
@@ -1458,8 +1425,7 @@ MonoBehaviour:
             m_Interactions: 
             m_SingletonActionBindings: []
             m_Flags: 0
-          m_Reference: {fileID: -2024308242397127297, guid: 18c412191cdc9274897f101c7fd5316f,
-            type: 3}
+          m_Reference: {fileID: -2024308242397127297, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
         rotationActionProperty:
           m_UseReference: 1
           m_Action:
@@ -1471,11 +1437,9 @@ MonoBehaviour:
             m_Interactions: 
             m_SingletonActionBindings: []
             m_Flags: 0
-          m_Reference: {fileID: 8248158260566104461, guid: 18c412191cdc9274897f101c7fd5316f,
-            type: 3}
+          m_Reference: {fileID: 8248158260566104461, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
     - rid: 6
-      type: {class: PolyfillHandRayPoseSource, ns: Microsoft.MixedReality.Toolkit.Input,
-        asm: Microsoft.MixedReality.Toolkit.Input}
+      type: {class: PolyfillHandRayPoseSource, ns: Microsoft.MixedReality.Toolkit.Input, asm: Microsoft.MixedReality.Toolkit.Input}
       data:
         hand: 0
 --- !u!114 &6618093373316033540
@@ -1734,88 +1698,71 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4332395624789801014}
     m_Modifications:
-    - target: {fileID: 916568500123441303, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 916568500123441303, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: rayInteractor
       value: 
       objectReference: {fileID: 2940030942784507886}
-    - target: {fileID: 916568500123441303, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 916568500123441303, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: visibilitySettings
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922015, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922015, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_Name
       value: RayReticle
       objectReference: {fileID: 0}
-    - target: {fileID: 4561340893587511738, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 4561340893587511738, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7113035467055917293, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 7113035467055917293, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: settings.handedness
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9095796513279534737, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 9095796513279534737, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1823,20 +1770,17 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
 --- !u!4 &3988544559415115452 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
   m_PrefabInstance: {fileID: 212221299525418658}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4448665028262160152 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 4561340893587511738, guid: fddee8b412d753e40a02681891de4a7b,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 4561340893587511738, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
   m_PrefabInstance: {fileID: 212221299525418658}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &8992338914735331379 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 9095796513279534737, guid: fddee8b412d753e40a02681891de4a7b,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 9095796513279534737, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
   m_PrefabInstance: {fileID: 212221299525418658}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1009008764017234214
@@ -1846,78 +1790,63 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1948193616346090106}
     m_Modifications:
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3867428799850922015, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 3867428799850922015, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_Name
       value: PokeReticle
       objectReference: {fileID: 0}
-    - target: {fileID: 7113035467055917293, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 7113035467055917293, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: settings.handedness
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7949002557058872435, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 7949002557058872435, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: fadeEnabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9095796513279534737, guid: fddee8b412d753e40a02681891de4a7b,
-        type: 3}
+    - target: {fileID: 9095796513279534737, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -1925,20 +1854,17 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
 --- !u!1 &3552666654439622812 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 4561340893587511738, guid: fddee8b412d753e40a02681891de4a7b,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 4561340893587511738, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
   m_PrefabInstance: {fileID: 1009008764017234214}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &4299642553587339576 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 3867428799850922014, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
   m_PrefabInstance: {fileID: 1009008764017234214}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &8086910922498750391 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 9095796513279534737, guid: fddee8b412d753e40a02681891de4a7b,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 9095796513279534737, guid: fddee8b412d753e40a02681891de4a7b, type: 3}
   m_PrefabInstance: {fileID: 1009008764017234214}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &943052423812839532

@@ -3,7 +3,6 @@
 
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Scripting;
 using UnityEngine.SubsystemsImplementation;
 using UnityEngine.XR;
@@ -42,10 +41,6 @@ namespace Microsoft.MixedReality.Toolkit.Subsystems
             public abstract bool TryGetNearInteractionPoint(XRNode hand, out HandJointPose jointPose);
 
             /// <inheritdoc/>
-            [Obsolete("Use TryGetJoint(TrackedHandJoint.Palm...) instead.")]
-            public abstract bool TryGetHandCenter(XRNode hand, out HandJointPose jointPose);
-
-            /// <inheritdoc/>
             public abstract bool TryGetPinchingPoint(XRNode hand, out HandJointPose jointPose);
 
             /// <inheritdoc/>
@@ -68,11 +63,6 @@ namespace Microsoft.MixedReality.Toolkit.Subsystems
         /// <inheritdoc/>
         public bool TryGetNearInteractionPoint(XRNode hand, out HandJointPose jointPose)
             => provider.TryGetNearInteractionPoint(hand, out jointPose);
-
-        /// <inheritdoc/>
-        [Obsolete("Use TryGetJoint(TrackedHandJoint.Palm...) instead.")]
-        public bool TryGetHandCenter(XRNode hand, out HandJointPose jointPose)
-            => provider.TryGetHandCenter(hand, out jointPose);
 
         /// <inheritdoc/>
         public bool TryGetPinchingPoint(XRNode hand, out HandJointPose jointPose)

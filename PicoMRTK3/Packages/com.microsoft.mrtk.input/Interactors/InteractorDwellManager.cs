@@ -20,7 +20,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
     {
         [SerializeField]
         [Tooltip("How long does the interactor remain selecting the interactable after entering dwell? " +
-                 "Selection on the interactable stops after this time passes.")]
+            "Selection on the interactable stops after this time passes.")]
         private float dwellTriggerTime = 0.3f;
 
         /// <summary>
@@ -45,16 +45,13 @@ namespace Microsoft.MixedReality.Toolkit.Input
         /// We stop triggering select (call EndManualInteraction) when the absolute value exceeds DwellTriggerTime.</para>
         /// <para>If the value is negative infinity, we have stopped triggering select (EndManualInteraction has been called).</para>
         /// </remarks>
-        private readonly Dictionary<StatefulInteractable, float> interactableDict =
-            new Dictionary<StatefulInteractable, float>();
+        private readonly Dictionary<StatefulInteractable, float> interactableDict = new Dictionary<StatefulInteractable, float>();
 
         private void Awake()
         {
-            interactor = GetComponent<XRBaseInteractor>();
-            if (interactor == null)
+            if (!TryGetComponent(out interactor))
             {
-                Debug.LogError(
-                    "Cannot locate an XRBaseInteractor on this GameObject, which is required by InteractorDwellManager.");
+                Debug.LogError("Cannot locate an XRBaseInteractor on this GameObject, which is required by InteractorDwellManager.");
             }
         }
 
@@ -86,7 +83,6 @@ namespace Microsoft.MixedReality.Toolkit.Input
                             {
                                 interactor.EndManualInteraction();
                             }
-
                             // Use NegativeInfinity as a marker of interaction ended
                             interactableDict[pair.Key] = float.NegativeInfinity;
                             // Remove the interactable from dictionary only if it is not being hovered by the interactor
@@ -120,14 +116,12 @@ namespace Microsoft.MixedReality.Toolkit.Input
                 foreach (var pair in interactableDict)
                 {
                     // The interactable is currently being selected.
-                    if (pair.Value < 0 && !float.IsNegativeInfinity(interactableDict[pair.Key]) &&
-                        interactor.IsSelecting(pair.Key))
+                    if (pair.Value < 0 && !float.IsNegativeInfinity(interactableDict[pair.Key]) && interactor.IsSelecting(pair.Key))
                     {
                         interactor.EndManualInteraction();
                     }
                 }
             }
-
             interactableDict.Clear();
         }
 
@@ -135,13 +129,10 @@ namespace Microsoft.MixedReality.Toolkit.Input
         {
             // if we are processing a StatefulInteractable AND the dwell is enabled for the type of interactor AND the interactable is not being tracked by the dictionary
             if (eventArgs.interactableObject is StatefulInteractable statefulInteractable &&
-                (statefulInteractable.UseFarDwell && interactor is IRayInteractor ||
-                 statefulInteractable.UseGazeDwell && interactor is IGazeInteractor) &&
+                (statefulInteractable.UseFarDwell && interactor is IRayInteractor || statefulInteractable.UseGazeDwell && interactor is IGazeInteractor) &&
                 !interactableDict.ContainsKey(statefulInteractable))
             {
-                interactableDict[statefulInteractable] = interactor is MRTKRayInteractor
-                    ? statefulInteractable.FarDwellTime
-                    : statefulInteractable.GazeDwellTime;
+                interactableDict[statefulInteractable] = interactor is MRTKRayInteractor ? statefulInteractable.FarDwellTime : statefulInteractable.GazeDwellTime;
             }
         }
 

@@ -16,7 +16,8 @@ namespace Microsoft.MixedReality.Toolkit.Input
     [AddComponentMenu("MRTK/Input/Interaction Detector")]
     public class InteractionDetector : MonoBehaviour, IInteractionModeDetector
     {
-        [SerializeField] [Tooltip("The interactor to listen to.")]
+        [SerializeField]
+        [Tooltip("The interactor to listen to.")]
         private XRBaseInteractor interactor;
 
         /// <summary>
@@ -28,7 +29,8 @@ namespace Microsoft.MixedReality.Toolkit.Input
             set => interactor = value;
         }
 
-        [SerializeField] [Tooltip("Should this detector set a mode when the specified interactor has a hover target?")]
+        [SerializeField]
+        [Tooltip("Should this detector set a mode when the specified interactor has a hover target?")]
         private bool detectHover;
 
         /// <summary>
@@ -54,7 +56,8 @@ namespace Microsoft.MixedReality.Toolkit.Input
             set => modeOnHover = value;
         }
 
-        [SerializeField] [Tooltip("Should this detector set a mode when the specified interactor has a selection?")]
+        [SerializeField]
+        [Tooltip("Should this detector set a mode when the specified interactor has a selection?")]
         private bool detectSelect;
 
         /// <summary>
@@ -97,12 +100,12 @@ namespace Microsoft.MixedReality.Toolkit.Input
             {
                 return modeOnHover;
             }
+
         }
 
         [SerializeField]
         [FormerlySerializedAs("Controllers")]
-        [Tooltip(
-            "List of GameObjects which represent the 'controllers' that this interaction mode detector has jurisdiction over. Interaction modes will be set on all specified controllers.")]
+        [Tooltip("List of GameObjects which represent the 'controllers' that this interaction mode detector has jurisdiction over. Interaction modes will be set on all specified controllers.")]
         private List<GameObject> controllers;
 
         /// <inheritdoc />
@@ -116,10 +119,9 @@ namespace Microsoft.MixedReality.Toolkit.Input
             // Remove if/when XRI sets hasHover/Selection when their ray interactor is hovering/selecting legacy UI.
             if (interactor is MRTKRayInteractor rayInteractor)
             {
-                isDetected |= (rayInteractor.HasUIHover && detectHover) ||
-                              (rayInteractor.HasUISelection && detectSelect);
+                isDetected |= (rayInteractor.HasUIHover && detectHover) || (rayInteractor.HasUISelection && detectSelect);
             }
-            
+
             return isDetected;
         }
     }

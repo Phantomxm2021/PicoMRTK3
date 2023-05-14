@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 742764ba9da7f294782ccbe902ec794f, type: 3}
   m_Name: FullFrequencyRange
   m_EditorClassIdentifier: 
-  lowFrequencyCutoff: 10
+  lowFrequencuCutoff: 10
   highFrequencyCutoff: 22000

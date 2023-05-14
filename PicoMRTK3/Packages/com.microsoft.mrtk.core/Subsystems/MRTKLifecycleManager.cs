@@ -27,7 +27,7 @@ namespace Microsoft.MixedReality.Toolkit.Subsystems
             // Fetch all descriptors from subsystem management
             List<ISubsystemDescriptor> subsystemDescriptors = new List<ISubsystemDescriptor>();
             SubsystemManager.GetAllSubsystemDescriptors(subsystemDescriptors);
-         
+
             // Get the currently loaded profile, with which we will
             // determine which subsystems to create and launch.
             MRTKProfile currentProfile = MRTKProfile.Instance;
@@ -51,7 +51,7 @@ namespace Microsoft.MixedReality.Toolkit.Subsystems
 
                 // If the current profile does not want the subsystem to be created/started,
                 // we skip this. The subsystem can still be created + started manually later.
-                if (!currentProfile.LoadedSubsystems.Contains(mrtkDescriptor.SubsystemTypeOverride) )
+                if (!currentProfile.LoadedSubsystems.Contains(mrtkDescriptor.SubsystemTypeOverride))
                 {
                     continue;
                 }

@@ -319,8 +319,8 @@ namespace PicoMRTK3Support.Runtime
             // // transform.localScale =
             // //     new Vector3(handNode == XRNode.LeftHand ? -handScale : handScale, handScale, handScale);
             //
-            // // Update the hand material based on selectedness value
-            // UpdateHandMaterial();
+            // Update the hand material based on selectedness value
+            UpdateHandMaterial();
         }
 
         // Computes the error between the rig's joint position and

@@ -14,22 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCustomProfile: 0
   loadedSubsystems:
+  - reference: Microsoft.MixedReality.Toolkit.Input.SyntheticHandsSubsystem, Microsoft.MixedReality.Toolkit.Input
   - reference: PicoMRTK3Support.Runtime.PicoMRTKHandsSubsystem, PIcoMRTK3Support.Runtime
   - reference: PicoMRTK3Support.Runtime.PicoMRTKHandsAggregatorSubsystem, PIcoMRTK3Support.Runtime
-  - reference: Pico.Runtime.ExtensionComponents.PicoMRTKHandsSubsystem, Pico.Runtime
-  - reference: Pico.Runtime.ExtensionComponents.PicoMRTKHandsAggregatorSubsystem,
-      Pico.Runtime
+  - reference: Microsoft.MixedReality.Toolkit.Speech.Windows.WindowsKeywordRecognitionSubsystem,
+      Microsoft.MixedReality.Toolkit.Speech.Windows
+  - reference: Microsoft.MixedReality.Toolkit.Speech.Windows.WindowsTextToSpeechSubsystem,
+      Microsoft.MixedReality.Toolkit.Speech.Windows
   - reference: Microsoft.MixedReality.Toolkit.Accessibility.MRTKAccessibilitySubsystem,
       Microsoft.MixedReality.Toolkit.Accessibility
+  - reference: Microsoft.MixedReality.Toolkit.Input.OpenXRHandsSubsystem, Microsoft.MixedReality.Toolkit.Input
   subsystemConfigs:
     entries:
     - key:
         reference: PicoMRTK3Support.Runtime.PicoMRTKHandsAggregatorSubsystem, PIcoMRTK3Support.Runtime
       value: {fileID: 11400000, guid: b8da41358d218754494ea49599e7b0fb, type: 2}
     - key:
-        reference: Pico.Runtime.ExtensionComponents.PicoMRTKHandsAggregatorSubsystem,
-          Pico.Runtime
-      value: {fileID: 11400000, guid: b8da41358d218754494ea49599e7b0fb, type: 2}
+        reference: Microsoft.MixedReality.Toolkit.Speech.Windows.WindowsTextToSpeechSubsystem,
+          Microsoft.MixedReality.Toolkit.Speech.Windows
+      value: {fileID: 11400000, guid: ec06601741075d94188888a307e8ebd7, type: 2}
+    - key:
+        reference: Microsoft.MixedReality.Toolkit.Speech.Windows.WindowsKeywordRecognitionSubsystem,
+          Microsoft.MixedReality.Toolkit.Speech.Windows
+      value: {fileID: 11400000, guid: 610e76a350bf5e24b95a8b7d7024ded7, type: 2}
+    - key:
+        reference: Microsoft.MixedReality.Toolkit.Speech.Windows.WindowsDictationSubsystem,
+          Microsoft.MixedReality.Toolkit.Speech.Windows
+      value: {fileID: 11400000, guid: c1ec3a5357948504fac70f304d21881a, type: 2}
     - key:
         reference: Microsoft.MixedReality.Toolkit.Accessibility.MRTKAccessibilitySubsystem,
           Microsoft.MixedReality.Toolkit.Accessibility
@@ -42,3 +53,5 @@ MonoBehaviour:
         reference: Microsoft.MixedReality.Toolkit.Input.MRTKHandsAggregatorSubsystem,
           Microsoft.MixedReality.Toolkit.Input
       value: {fileID: 11400000, guid: b8da41358d218754494ea49599e7b0fb, type: 2}
+  <SpatializationMixer>k__BackingField: {fileID: 24300002, guid: 736e666b0fc7048c1b865e648d2f0478,
+    type: 2}
