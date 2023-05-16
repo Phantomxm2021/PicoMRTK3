@@ -1,0 +1,58 @@
+﻿/*******************************************************************************
+Copyright © 2015-2022 PICO Technology Co., Ltd.All rights reserved.  
+
+NOTICE：All information contained herein is, and remains the property of 
+PICO Technology Co., Ltd. The intellectual and technical concepts 
+contained herein are proprietary to PICO Technology Co., Ltd. and may be 
+covered by patents, patents in process, and are protected by trade secret or 
+copyright law. Dissemination of this information or reproduction of this 
+material is strictly forbidden unless prior written permission is obtained from
+PICO Technology Co., Ltd. 
+*******************************************************************************/
+
+using System.IO;
+using UnityEngine;
+
+namespace Unity.XR.PXR
+{
+    [System.Serializable]
+    public class PXR_ProjectSetting: ScriptableObject
+    {
+        public bool useContentProtect;
+        public bool handTracking;
+        public bool openMRC;
+        public bool faceTracking;
+        public bool lipsyncTracking;
+        public bool eyeTracking;
+        public bool latelatching;
+
+        public static PXR_ProjectSetting GetProjectConfig()
+        {
+            PXR_ProjectSetting projectConfig = Resources.Load<PXR_ProjectSetting>("PXR_ProjectSetting");
+#if UNITY_EDITOR
+            if (projectConfig == null)
+            {
+                projectConfig = CreateInstance<PXR_ProjectSetting>();
+                projectConfig.useContentProtect = false;
+                projectConfig.handTracking = false;
+                projectConfig.openMRC = true;
+                projectConfig.faceTracking = false;
+                projectConfig.lipsyncTracking = false;
+                projectConfig.eyeTracking = false;
+                projectConfig.latelatching = false;
+                string path = Application.dataPath + "/Resources";
+                if (!Directory.Exists(path))
+                {
+                    UnityEditor.AssetDatabase.CreateFolder("Assets", "Resources");
+                    UnityEditor.AssetDatabase.CreateAsset(projectConfig, "Assets/Resources/PXR_ProjectSetting.asset");
+                }
+                else
+                {
+                    UnityEditor.AssetDatabase.CreateAsset(projectConfig, "Assets/Resources/PXR_ProjectSetting.asset");
+                }
+            }
+#endif
+            return projectConfig;
+        }
+    }
+}
