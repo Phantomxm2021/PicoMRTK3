@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "5XAECU5H5HKNMBU8",
+    "m_SelectedDeviceId": "PA8110MGG9280351G",
     "m_SelectedPackage": {
         "deviceId": "PA8110MGG9280351G",
         "name": "com.Phantom.PicoMRTK3",
-        "processId": 29240,
+        "processId": 23737,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -276,6 +276,12 @@
             "deviceId": "PA8110MGG9280351G",
             "name": "com.Phantom.PicoMRTK3",
             "processId": 29240,
+            "exited": false
+        },
+        {
+            "deviceId": "PA8110MGG9280351G",
+            "name": "com.Phantom.PicoMRTK3",
+            "processId": 23737,
             "exited": false
         }
     ],
