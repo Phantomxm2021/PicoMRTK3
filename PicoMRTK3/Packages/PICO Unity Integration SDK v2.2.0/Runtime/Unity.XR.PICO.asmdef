@@ -1,0 +1,28 @@
+{
+    "name": "Unity.XR.PICO",
+    "references": [
+        "Unity.XR.Management",
+        "Unity.InputSystem",
+        "Unity.Subsystem.Registration"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.inputsystem",
+            "expression": "",
+            "define": "UNITY_INPUT_SYSTEM"
+        },
+        {
+            "name": "com.unity.xr.management",
+            "expression": "3.2.0",
+            "define": "XR_MGMT_GTE_320"
+        }
+    ],
+    "noEngineReferences": false
+}

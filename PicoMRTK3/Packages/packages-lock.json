@@ -358,14 +358,14 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.picoxr": {
-      "version": "file:PICO Unity Integration SDK v2.1.4",
+      "version": "file:PICO Unity Integration SDK v2.2.0",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.unity.xr.management": "3.2.16",
+        "com.unity.xr.management": "4.0.0",
         "com.unity.ugui": "1.0.0",
         "com.unity.subsystemregistration": "1.0.6",
-        "com.unity.xr.interaction.toolkit": "0.9.4-preview"
+        "com.unity.xr.interaction.toolkit": "2.0.0"
       }
     },
     "com.unity.modules.ai": {
