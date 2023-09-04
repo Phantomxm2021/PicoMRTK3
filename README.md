@@ -67,3 +67,7 @@ Copy the following package into your manifest.json
 ```
 "com.microsoft.mrtk.graphicstools.unity": "https://github.com/microsoft/MixedReality-GraphicsTools-Unity.git?path=/com.microsoft.mrtk.graphicstools.unity#v0.4.0",
 ```
+
+## Social
+
+WeChat: falcon106
