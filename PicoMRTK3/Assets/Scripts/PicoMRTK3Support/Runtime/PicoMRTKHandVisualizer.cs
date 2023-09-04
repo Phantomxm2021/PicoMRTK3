@@ -10,6 +10,7 @@
 // // ===============================================================================*/
 
 #if MRTK3_INSTALL
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.XR.PXR;
@@ -19,7 +20,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace PicoMRTK3Support.Runtime
 {
-    public class PicoMRTKHandVisualizer:MonoBehaviour
+    [Obsolete("Deprecated", true)]
+    public class PicoMRTKHandVisualizer : MonoBehaviour
     {
         [SerializeField] [Tooltip("The XRNode on which this hand is located.")]
         private XRNode handNode = XRNode.LeftHand;
@@ -197,128 +199,30 @@ namespace PicoMRTK3Support.Runtime
 
                 transform.localScale = Vector3.one * handJointLocations.handScale;
 
-                for (int i = 0; i < riggedVisualJointsArray.Length; ++i)
+                // Set to Wrist
+                riggedVisualJointsArray[1].position =
+                    handJointLocations.jointLocations[1].pose.Position.ToVector3();
+                riggedVisualJointsArray[1].rotation =
+                    handJointLocations.jointLocations[1].pose.Orientation.ToQuat();
+
+                for (int i = 2; i < riggedVisualJointsArray.Length; ++i)
                 {
                     if (riggedVisualJointsArray[i] == null)
                     {
                         continue;
                     }
 
-                    if (i == (int) HandJoint.JointWrist)
+                    if (i == (int) HandJoint.JointThumbMetacarpal)
                     {
-                        riggedVisualJointsArray[i].position =
-                            handJointLocations.jointLocations[i].pose.Position.ToVector3();
-                        riggedVisualJointsArray[i].rotation =
-                            handJointLocations.jointLocations[i].pose.Orientation.ToQuat();
+                        Debug.Log(
+                            $"JointThumbMetacarpal Rotation:{handJointLocations.jointLocations[i].pose.Orientation.ToQuat()}");
                     }
-                    else
-                    {
-                        riggedVisualJointsArray[i].localRotation =
-                            handJointLocations.jointLocations[i].pose.Orientation.ToQuat();
-                    }
+
+                    riggedVisualJointsArray[i].localRotation =
+                        handJointLocations.jointLocations[i].pose.Orientation.ToQuat();
                 }
             }
 
-            // // Query all joints in the hand.
-            // if (!ShouldRenderHand() ||
-            //     !PXR_HandTracking.GetJointLocations(HandType, ref handJointLocations))
-            // {
-            //     // Hide the hand and abort if we shouldn't be
-            //     // showing the hand, for whatever reason.
-            //     // (Missing joint data, no subsystem, additive
-            //     // display, etc!)
-            //     handRenderer.enabled = false;
-            //     return;
-            // }
-            //
-            // handRenderer.enabled = true;
-            // transform.localScale = Vector3.one * handJointLocations.handScale;
-            //
-            // // We'll accumulate joint error as we iterate over each joint
-            // // and compare it to the user's actual joint data.
-            // float error = 0.0f;
-            //
-            // for (int i = 0; i < handJointLocations.jointCount; i++)
-            // {
-            //     var jointPose = handJointLocations.jointLocations[i];
-            //     // The actual, physical, rigged joint on the armature.
-            //     // This actually corresponds to the "base" of the bone;
-            //     // as an example, riggedVisualJointsArray[IndexMetacarpal] actually
-            //     // corresponds to a transform that is located at the wrist joint,
-            //     // but points towards the metacarpal joint location.
-            //     // This discrepancy is because OpenXR uses joint locations/rotations,
-            //     // whereas armatures/Unity/Blender use *bones*.
-            //     Transform jointTransform = riggedVisualJointsArray[i];
-            //
-            //     if (jointTransform != null)
-            //     {
-            //         switch ((HandJoint) i)
-            //         {
-            //             case HandJoint.JointPalm:
-            //                 // Don't track the palm. The hand mesh shouldn't have a "palm bone".
-            //                 break;
-            //             case HandJoint.JointWrist:
-            //                 // Set the wrist directly from the joint data.
-            //                 jointTransform.position = jointPose.pose.Position.ToVector3();
-            //                 jointTransform.localRotation = jointPose.pose.Orientation.ToQuat();
-            //                 break;
-            //             // case HandJoint.JointThumbTip:
-            //             // case HandJoint.JointIndexTip:
-            //             // case HandJoint.JointMiddleTip:
-            //             // case HandJoint.JointRingTip:
-            //             // case HandJoint.JointLittleTip:
-            //             //     // The tip bone uses the joint rotation directly.
-            //             //     // jointTransform.rotation =
-            //             //     handJointLocations.jointLocations[i - 1].pose.Orientation.ToQuat();
-            //             //     // Compute and accumulate the error between the hand mesh and the user's joint data.
-            //             //     error += JointError(jointTransform.position,
-            //             //         handJointLocations.jointLocations[i - 1].pose.Position.ToVector3(),
-            //             //         jointTransform.forward);
-            //             //     break;
-            //             // case HandJoint.JointThumbMetacarpal:
-            //             // case HandJoint.JointIndexMetacarpal:
-            //             // case HandJoint.JointMiddleMetacarpal:
-            //             // case HandJoint.JointRingMetacarpal:
-            //             // case HandJoint.JointLittleMetacarpal:
-            //             //     // Special case metacarpals, because Wrist is not always i-1.
-            //             //     // This is the same "simple IK" as the default case, but with special index logic.
-            //             //     jointTransform.rotation = Quaternion.LookRotation(
-            //             //         jointPose.pose.Position.ToVector3() - handJointLocations
-            //             //             .jointLocations[(int) HandJoint.JointWrist].pose.Position.ToVector3(),
-            //             //         jointPose.pose.Position.ToVector3().y * Vector3.up);
-            //             //     break;
-            //             default:
-            //                 // For all other bones, do a simple "IK" from the rigged joint to the joint data's position.
-            //                 // jointTransform.rotation = Quaternion.LookRotation(
-            //                 //     jointPose.pose.Position.ToVector3() - jointTransform.position,
-            //                 //     handJointLocations.jointLocations[i - 1].pose.Position.ToVector3().y * Vector3.up);
-            //                 jointTransform.localRotation = handJointLocations.jointLocations[i].pose.Orientation.ToQuat();
-            //
-            //                 break;
-            //         }
-            //     }
-            // }
-            //
-            // // Compute and apply the adjusted scale of the hand.
-            // // Over time, we'll grow or shrink the rigged hand
-            // // to more accurately fit the actual size of the
-            // // user's hand.
-            //
-            // // How quickly the hand will grow or shrink
-            // // to fit the user's hand size.
-            // const float errorGainFactor = 0.1f;
-            //
-            // // Reasonable minimum and maximum for how much
-            // // the hand mesh is allowed to stretch to fit the user.
-            // const float minScale = 0.8f;
-            // const float maxScale = 1.1f;
-            //
-            // // Apply.
-            // // handScale += -error * errorGainFactor;
-            // // handScale = Mathf.Clamp(handScale, minScale, maxScale);
-            // // transform.localScale =
-            // //     new Vector3(handNode == XRNode.LeftHand ? -handScale : handScale, handScale, handScale);
-            //
             // Update the hand material based on selectedness value
             UpdateHandMaterial();
         }

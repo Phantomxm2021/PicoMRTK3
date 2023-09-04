@@ -132,8 +132,8 @@ namespace PicoMRTK3Support.Runtime
 
                     // Fix for Pico hand tracking
                     // Because pico hand tracking palm has not data(position and rotation).
-                    if (index == 0)
-                        index = 1;
+                    // if (index == 0)
+                    //     index = 1;
                     // // Fix for Pico hand tracking.
                     // // Left-handed and right-handed data are reversed
                     // if (HandNode == XRNode.LeftHand)

@@ -166,8 +166,8 @@ namespace PicoMRTK3Support.Runtime
 
                     // Fix for Pico hand tracking
                     // Because pico hand tracking palm has not data(position and rotation).
-                    if (jointIndex == 0)
-                        jointIndex = 1;
+                    // if (jointIndex == 0)
+                    //     jointIndex = 1;
                     // Fix for Pico hand tracking.
                     // Left-handed and right-handed data are reversed
                     // if (HandNode == XRNode.LeftHand)
@@ -333,7 +333,7 @@ namespace PicoMRTK3Support.Runtime
                 }
 
                 // Is the hand facing away from the head? Pinching is only allowed when this is true.
-                bool handIsFacingAway = IsPalmFacingAway(palm, handNode == XRNode.LeftHand);
+                bool handIsFacingAway = IsPalmFacingAway(palm);
 
                 // Possibly sqr magnitude for performance?
                 // Would need to adjust thresholds so that everything works in square-norm
@@ -364,7 +364,7 @@ namespace PicoMRTK3Support.Runtime
                     return false;
                 }
 
-                palmFacingAway = IsPalmFacingAway(palm, hand == XRNode.LeftHand);
+                palmFacingAway = IsPalmFacingAway(palm);
                 return gotData;
             }
 

@@ -17,26 +17,26 @@ using UnityEngine;
 
 namespace PicoMRTK3Support.Editor
 {
-    [CustomEditor(typeof(PicoMRTKHandVisualizer))]
-    public class PXR_MRTKHandEditor : UnityEditor.Editor
-    {
-        public override void OnInspectorGUI()
-        {
-            DrawDefaultInspector();
-            serializedObject.ApplyModifiedProperties();
-
-            PicoMRTKHandVisualizer hand = (PicoMRTKHandVisualizer) target;
-
-            EditorGUILayout.LabelField("Hand Joints", EditorStyles.boldLabel);
-
-            for (int i = 0; i < (int) HandJoint.JointMax; i++)
-            {
-                string jointName = ((HandJoint) i).ToString();
-                hand.riggedVisualJointsArray[i] =
-                    (Transform) EditorGUILayout.ObjectField(jointName, hand.riggedVisualJointsArray[i],
-                        typeof(Transform), true);
-            }
-        }
-    }
+    // [CustomEditor(typeof(PicoMRTKHandVisualizer))]
+    // public class PXR_MRTKHandEditor : UnityEditor.Editor
+    // {
+    //     public override void OnInspectorGUI()
+    //     {
+    //         DrawDefaultInspector();
+    //         serializedObject.ApplyModifiedProperties();
+    //
+    //         PicoMRTKHandVisualizer hand = (PicoMRTKHandVisualizer) target;
+    //
+    //         EditorGUILayout.LabelField("Hand Joints", EditorStyles.boldLabel);
+    //
+    //         for (int i = 0; i < (int) HandJoint.JointMax; i++)
+    //         {
+    //             string jointName = ((HandJoint) i).ToString();
+    //             hand.riggedVisualJointsArray[i] =
+    //                 (Transform) EditorGUILayout.ObjectField(jointName, hand.riggedVisualJointsArray[i],
+    //                     typeof(Transform), true);
+    //         }
+    //     }
+    // }
 }
 #endif

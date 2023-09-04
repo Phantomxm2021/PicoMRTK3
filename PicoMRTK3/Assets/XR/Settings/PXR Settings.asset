@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stereoRenderingModeAndroid: 1
   systemDisplayFrequency: 2
+  optimizeBufferDiscards: 1
+  enableAppSpaceWarp: 1
+  systemSplashScreen: {fileID: 0}

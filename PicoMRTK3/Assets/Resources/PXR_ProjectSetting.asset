@@ -17,3 +17,14 @@ MonoBehaviour:
   openMRC: 1
   faceTracking: 0
   lipsyncTracking: 0
+  eyeTracking: 0
+  eyetrackingCalibration: 0
+  enableETFR: 0
+  latelatching: 0
+  latelatchingDebug: 0
+  enableSubsampled: 0
+  bodyTracking: 0
+  adaptiveResolution: 0
+  stageMode: 0
+  videoSeeThrough: 1
+  spatialAnchor: 0
