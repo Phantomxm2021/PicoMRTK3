@@ -11,9 +11,9 @@
 #if MRTK3_INSTALL
 
 using System.Collections.Generic;
-using Microsoft.MixedReality.Toolkit;
-using Microsoft.MixedReality.Toolkit.Input;
-using Microsoft.MixedReality.Toolkit.Subsystems;
+using MixedReality.Toolkit;
+using MixedReality.Toolkit.Input;
+using MixedReality.Toolkit.Subsystems;
 using Unity.Profiling;
 using Unity.XR.PXR;
 using UnityEngine;
@@ -81,7 +81,7 @@ namespace PicoMRTK3Support.Runtime
                         TryCalculateEntireHand();
                     }
 
-                    result = handJoints;
+                    result = HandJoints;
                     return FullQueryValid;
                 }
             }
@@ -105,7 +105,7 @@ namespace PicoMRTK3Support.Runtime
                     {
                         if (!picoHandTracker.TryLocateHandJoints(ref HandJointLocations))
                         {
-                            pose = handJoints[index];
+                            pose = HandJoints[index];
                             return false;
                         }
 
@@ -113,7 +113,7 @@ namespace PicoMRTK3Support.Runtime
                         Transform origin = PlayspaceUtilities.XROrigin.CameraFloorOffsetObject.transform;
                         if (origin == null)
                         {
-                            pose = handJoints[index];
+                            pose = HandJoints[index];
                             return false;
                         }
 
@@ -147,7 +147,7 @@ namespace PicoMRTK3Support.Runtime
                     //     //     $"[Pico-MRTK]-OldQ:{tmp_OldQuaternion},new:{handJoints[index].Pose.rotation},Old Up*:{tmp_OldQuaternion * Vector3.up},New UP*:{handJoints[index].Pose.rotation * Vector3.up},PoseUP:{handJoints[index].Pose.up}");
                     // }
 
-                    pose = handJoints[index];
+                    pose = HandJoints[index];
 
                     return thisQueryValid;
                 }
@@ -208,7 +208,7 @@ namespace PicoMRTK3Support.Runtime
             {
                 using (UpdateJointPerfMarker.Auto())
                 {
-                    handJoints[jointIndex] = new HandJointPose(
+                    HandJoints[jointIndex] = new HandJointPose(
                         playspaceTransform.TransformPoint(handJointLocation.pose.Position.ToVector3()),
                         playspaceTransform.rotation * handJointLocation.pose.Orientation.ToQuat(),
                         handJointLocation.radius);

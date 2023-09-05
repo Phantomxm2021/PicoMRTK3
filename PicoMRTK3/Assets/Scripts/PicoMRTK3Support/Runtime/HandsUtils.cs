@@ -11,7 +11,7 @@
 
 
 #if MRTK3_INSTALL
-using Microsoft.MixedReality.Toolkit;
+using MixedReality.Toolkit;
 
 namespace PicoMRTK3Support.Runtime
 {

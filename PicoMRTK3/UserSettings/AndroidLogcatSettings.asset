@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "PA8110MGG9280351G",
     "m_SelectedPackage": {
-        "deviceId": "PA8110MGG9280351G",
-        "name": "com.Phantom.PicoMRTK3",
-        "processId": 20123,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,332 +11,26 @@
         {
             "deviceId": "PA8110MGG9280351G",
             "name": "com.Phantom.PicoMRTK3",
-            "processId": 8938,
+            "processId": 6462,
             "exited": true
         },
         {
             "deviceId": "PA8110MGG9280351G",
             "name": "com.Phantom.PicoMRTK3",
-            "processId": 9517,
+            "processId": 6467,
             "exited": true
         },
         {
             "deviceId": "PA8110MGG9280351G",
             "name": "com.Phantom.PicoMRTK3",
-            "processId": 9520,
+            "processId": 6471,
             "exited": true
         },
         {
             "deviceId": "PA8110MGG9280351G",
             "name": "com.Phantom.PicoMRTK3",
-            "processId": 10319,
+            "processId": 22695,
             "exited": true
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 11040,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 11043,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 23184,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 24632,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 14054,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 15503,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 15502,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 16616,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 16618,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 17449,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 24284,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 24287,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 25022,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 25025,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 26605,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 26610,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 9417,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 10308,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 10311,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 11084,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 11440,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 11442,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 12834,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 12836,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 13920,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 16477,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 17107,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 17127,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 17657,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 17664,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 18331,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 18334,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 19244,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 20158,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 20161,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 21858,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 21873,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 22271,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 25137,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 28905,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 29240,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 23737,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 30558,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 8921,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 14047,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 14059,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 14061,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 14064,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 20107,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 20108,
-            "exited": false
-        },
-        {
-            "deviceId": "PA8110MGG9280351G",
-            "name": "com.Phantom.PicoMRTK3",
-            "processId": 20123,
-            "exited": false
         }
     ],
     "m_Tags": {

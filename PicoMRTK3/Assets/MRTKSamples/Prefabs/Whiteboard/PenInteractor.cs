@@ -3,12 +3,13 @@
 
 using System;
 using System.Collections.Generic;
+using MixedReality.Toolkit;
 using Unity.Profiling;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
-using PokePath = Microsoft.MixedReality.Toolkit.IPokeInteractor.PokePath;
+using PokePath = MixedReality.Toolkit.IPokeInteractor.PokePath;
 
 namespace Microsoft.MixedReality.Toolkit.Examples.Demos
 {

@@ -12,9 +12,9 @@
 #if MRTK3_INSTALL
 using System;
 using System.Collections.Generic;
-using Microsoft.MixedReality.Toolkit;
-using Microsoft.MixedReality.Toolkit.Input;
-using Microsoft.MixedReality.Toolkit.Subsystems;
+using MixedReality.Toolkit;
+using MixedReality.Toolkit.Input;
+using MixedReality.Toolkit.Subsystems;
 using Unity.Profiling;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -91,7 +91,7 @@ namespace PicoMRTK3Support.Runtime
                                 // subsystems we're listening to, we can consider ourselves
                                 // to have valid data this frame.
                                 FullQueryValid |= true;
-                                Array.Copy((HandJointPose[]) data, handJoints, (int) TrackedHandJoint.TotalJoints);
+                                Array.Copy((HandJointPose[]) data, HandJoints, (int) TrackedHandJoint.TotalJoints);
                             }
 
                             if (gotPhysicalData)
@@ -106,7 +106,7 @@ namespace PicoMRTK3Support.Runtime
                         AlreadyFullQueried = true;
                     }
 
-                    joints = handJoints;
+                    joints = HandJoints;
                     return FullQueryValid;
                 }
             }
@@ -148,7 +148,7 @@ namespace PicoMRTK3Support.Runtime
                                 gotPhysicalData |= sys.subsystemDescriptor.IsPhysicalData;
 
                                 thisQueryValid |= true;
-                                handJoints[jointIndex] = data;
+                                HandJoints[jointIndex] = data;
                             }
 
                             if (gotPhysicalData)
@@ -180,7 +180,7 @@ namespace PicoMRTK3Support.Runtime
                     //             -tmp_OldQuaternion.w));
                     // }
 
-                    pose = handJoints[jointIndex];
+                    pose = HandJoints[jointIndex];
                     return thisQueryValid;
                 }
             }
@@ -290,7 +290,7 @@ namespace PicoMRTK3Support.Runtime
                 // GetJoint will reuse existing joint data if the hand was already queried this frame.
                 bool gotData = TryGetJoint(TrackedHandJoint.ThumbTip, handNode, out HandJointPose thumbPose);
                 gotData &= TryGetJoint(TrackedHandJoint.IndexTip, handNode, out HandJointPose indexPose);
-                gotData &= TryGetJoint(TrackedHandJoint.Wrist, handNode, out HandJointPose palmPose);
+                gotData &= TryGetJoint(TrackedHandJoint.Palm, handNode, out HandJointPose palmPose);
 
                 HandJointPose pinchPointPose = handNode == XRNode.LeftHand ? leftPinchPose : rightPinchPose;
 
