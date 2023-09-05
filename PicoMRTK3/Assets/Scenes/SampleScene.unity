@@ -4497,6 +4497,11 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 251265374, guid: 0d3b2fd2079cd514d8dbce654f929320, type: 3}
+      propertyPath: transformSmoothingLogicType.reference
+      value: MixedReality.Toolkit.SpatialManipulation.DefaultTransformSmoothingLogic,
+        MixedReality.Toolkit.SpatialManipulation
+      objectReference: {fileID: 0}
+    - target: {fileID: 251265374, guid: 0d3b2fd2079cd514d8dbce654f929320, type: 3}
       propertyPath: manipulationLogicTypes.moveLogicType.reference
       value: MixedReality.Toolkit.SpatialManipulation.MoveLogic, MixedReality.Toolkit.SpatialManipulation
       objectReference: {fileID: 0}
@@ -13497,7 +13502,7 @@ MonoBehaviour:
   rotateLerpTime: 0.001
   scaleLerpTime: 0.001
   enableConstraints: 1
-  constraintsManager: {fileID: 0}
+  constraintsManager: {fileID: 1710053219}
   manipulationLogicTypes:
     moveLogicType:
       reference: MixedReality.Toolkit.SpatialManipulation.MoveLogic, MixedReality.Toolkit.SpatialManipulation
@@ -13644,8 +13649,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f85af46f9bddd4ea78f11cee5e3b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handType: 3
-  proximityType: 3
+  handType: -1
+  proximityType: -1
   executionOrder: 0
   minimumScale: {x: 0.2, y: 0.2, z: 0.2}
   maximumScale: {x: 2, y: 2, z: 2}
@@ -15057,6 +15062,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3333465061198289187, guid: a31291e7cd07cc34f9b29ec2a6ab7224,
+        type: 3}
+      propertyPath: handType
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3333465061198289187, guid: a31291e7cd07cc34f9b29ec2a6ab7224,
+        type: 3}
+      propertyPath: proximityType
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 3484184696762796712, guid: a31291e7cd07cc34f9b29ec2a6ab7224,
         type: 3}
       propertyPath: m_IsActive
@@ -15462,8 +15477,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f85af46f9bddd4ea78f11cee5e3b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handType: 3
-  proximityType: 3
+  handType: -1
+  proximityType: -1
   executionOrder: 0
   minimumScale: {x: 0.2, y: 0.2, z: 0.2}
   maximumScale: {x: 2, y: 2, z: 2}
@@ -19409,6 +19424,11 @@ PrefabInstance:
     - target: {fileID: 251265374, guid: 0d3b2fd2079cd514d8dbce654f929320, type: 3}
       propertyPath: disabledInteractorTypes.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 251265374, guid: 0d3b2fd2079cd514d8dbce654f929320, type: 3}
+      propertyPath: transformSmoothingLogicType.reference
+      value: MixedReality.Toolkit.SpatialManipulation.DefaultTransformSmoothingLogic,
+        MixedReality.Toolkit.SpatialManipulation
       objectReference: {fileID: 0}
     - target: {fileID: 251265374, guid: 0d3b2fd2079cd514d8dbce654f929320, type: 3}
       propertyPath: manipulationLogicTypes.moveLogicType.reference
@@ -23878,6 +23898,7 @@ GameObject:
   - component: {fileID: 1375880285418024162}
   - component: {fileID: 4650321120075769818}
   - component: {fileID: 1485345068410425086}
+  - component: {fileID: 8159570492838347670}
   m_Layer: 0
   m_Name: MixedRealityKeyboardPreview
   m_TagString: Untagged
@@ -23909,6 +23930,25 @@ RectTransform:
   m_AnchoredPosition: {x: -0.0738, y: -0.0754}
   m_SizeDelta: {x: 170, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8159570492838347670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7980448365588862624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7951c64acb0fa62458bf30a60089fe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 0
+  m_CheckFor2DOcclusion: 0
+  m_CheckFor3DOcclusion: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RaycastTriggerInteraction: 1
 --- !u!224 &8203160154406504665
 RectTransform:
   m_ObjectHideFlags: 0
